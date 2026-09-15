@@ -40,7 +40,8 @@ Anti-Patrones de pipelines
 
 
 **Tarea:** Dibuja el ciclo y explica cada etapa con tus palabras.
-commit --> Build --> Test --> Verificaciones de Calidad --> Despliegue a Stagging --> Despliegue a prod
+
+-  commit --> Build --> Test --> Verificaciones de Calidad --> Despliegue a Stagging --> Despliegue a prod
 
 - pipeline: flujo automatizado de pasos. Commit -> Compilar -> Ejecutar pruebas -> Analizar calidad -> Desplegar
 - commit: Es el registro de un cambio realizado en el código dentro del sistema de control de versiones. Este cambio puede generar el inicio de un pipeline.
