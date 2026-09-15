@@ -42,10 +42,10 @@ Anti-Patrones de pipelines
 **Tarea:** Dibuja el ciclo y explica cada etapa con tus palabras.
 commit --> Build --> Test --> Verificaciones de Calidad --> Despliegue a Stagging --> Despliegue a prod
 
-pipeline: flujo automatizado de pasos. Commit -> Compilar -> Ejecutar pruebas -> Analizar calidad -> Desplegar
-commit: Es el registro de un cambio realizado en el código dentro del sistema de control de versiones. Este cambio puede generar el inicio de un pipeline.
-build: Punto de inicio donde se compila y/o se empaqueta , si falla en este punto todo el próximo proceso no continua
-Test: Aquí se realizan todas las pruebas que se hallan ajustado en el momento en el pipeline
-Verificaciones de Calidad: En este punto se realizan las verificaciones definidas en el pipeline para comprobar que el código cumple con los criterios de calidad establecidos, se realiza siempre
-Despliegue a stagging: Paso antes de prod y donde el usuario tester prueba lo necesario , con la finalidad de que lo que no se detecto anteriomente
-Despliegue a PROD: paso final, se puede aplicar entrega continua (humano aprueba) o Despliegue continuo (se pasa de forma directa)
+- pipeline: flujo automatizado de pasos. Commit -> Compilar -> Ejecutar pruebas -> Analizar calidad -> Desplegar
+- commit: Es el registro de un cambio realizado en el código dentro del sistema de control de versiones. Este cambio puede generar el inicio de un pipeline.
+- build: Punto de inicio donde se compila y/o se empaqueta , si falla en este punto todo el próximo proceso no continua
+- Test: Aquí se realizan todas las pruebas que se hallan ajustado en el momento en el pipeline
+- Verificaciones de Calidad: En este punto se realizan las verificaciones definidas en el pipeline para comprobar que el código cumple con los criterios de  calidad establecidos, se realiza siempre
+- Despliegue a stagging: Paso antes de prod y donde el usuario tester prueba lo necesario , con la finalidad de que lo que no se detecto anteriomente
+- Despliegue a PROD: paso final, se puede aplicar entrega continua (humano aprueba) o Despliegue continuo (se pasa de forma directa)
