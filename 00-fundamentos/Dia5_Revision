@@ -1,0 +1,245 @@
+CORRECCIONES Y PUNTOS A REFORZAR - SEMANA 1 DEVOPS
+=====================================================
+
+Objetivo:
+Registrar las principales correcciones detectadas en la evaluación de la
+Semana 1 y los conceptos que debo reforzar antes de avanzar.
+
+1. DEVOPS
+---------
+DevOps es principalmente una cultura y un conjunto de prácticas que buscan
+mejorar la colaboración entre Desarrollo (Dev) y Operaciones (Ops), junto con
+procesos, automatización, feedback y mejora continua.
+
+- Dev = Desarrollo.
+- Ops = Operaciones.
+- DevOps busca colaboración durante todo el ciclo de vida del software.
+- No significa necesariamente crear un único equipo que atienda directamente
+  al cliente.
+
+2. AGILE Y DEVOPS
+-----------------
+Agile y DevOps están relacionados, pero no son lo mismo.
+
+Agile busca desarrollar y entregar software de forma iterativa, adaptándose
+al cambio y al feedback.
+
+DevOps extiende esta colaboración y velocidad hacia todo el ciclo, incluyendo
+construcción, pruebas, entrega, despliegue y operación.
+
+No debo asociar Agile directamente con "muchos equipos que generan demoras".
+Esa no es una característica propia de Agile.
+
+3. COMMIT, PIPELINE Y BUILD
+---------------------------
+
+COMMIT:
+Es el registro de un cambio realizado en el código dentro del sistema de
+control de versiones. Puede generar el inicio de un pipeline, dependiendo de
+la configuración.
+
+PIPELINE:
+Es un flujo automatizado de pasos que se ejecutan para validar, preparar
+y/o desplegar un cambio.
+
+BUILD:
+Es el proceso donde el software puede ser compilado, empaquetado o preparado
+para las siguientes etapas.
+
+IMPORTANTE:
+El commit NO necesariamente empaqueta el código. El empaquetado o preparación
+corresponde normalmente al Build.
+
+4. FRASE CLAVE
+--------------
+Commit  = "Registro un cambio."
+Pipeline = "Ejecuto un flujo de pasos automatizados sobre ese cambio."
+Build    = "Preparo, compilo o empaqueto el software."
+
+5. TEST VS VERIFICACIONES DE CALIDAD
+-------------------------------------
+
+TEST:
+Busca comprobar si la aplicación funciona como debería.
+Ejemplos: pruebas unitarias, integración y otras pruebas configuradas.
+
+Pregunta principal:
+"¿La aplicación funciona correctamente?"
+
+VERIFICACIONES DE CALIDAD:
+Comprueban si el código cumple los criterios y reglas de calidad establecidos.
+
+Pueden incluir:
+- Reglas de calidad.
+- Análisis estático.
+- Vulnerabilidades.
+- Cobertura.
+- Estándares definidos por el equipo.
+
+Pregunta principal:
+"¿El código cumple nuestros criterios de calidad?"
+
+6. STAGING
+----------
+Staging es un ambiente previo a producción, normalmente preparado para
+realizar validaciones en condiciones similares a producción.
+
+No existe solamente para encontrar errores que el pipeline no detectó.
+Puede utilizarse para diferentes tipos de validaciones antes de producción.
+
+7. CONTINUOUS DELIVERY VS CONTINUOUS DEPLOYMENT
+------------------------------------------------
+
+CONTINUOUS DELIVERY:
+El software queda preparado para ser desplegado y puede existir una
+aprobación antes de producción. No necesariamente significa que siempre
+exista una aprobación humana.
+
+CONTINUOUS DEPLOYMENT:
+Si las condiciones y validaciones configuradas se cumplen, el cambio puede
+llegar automáticamente a producción.
+
+8. CI/CD VS CLOUD
+-----------------
+
+JENKINS / GITHUB ACTIONS:
+Permiten automatizar procesos de CI/CD como:
+
+Código -> Build -> Test -> Quality -> Deploy
+
+AWS / GCP / AZURE:
+Son proveedores Cloud que ofrecen servicios de infraestructura y plataforma,
+como servidores, redes, almacenamiento, bases de datos, contenedores y
+servicios serverless.
+
+Ejemplo:
+GitHub -> GitHub Actions -> Build + Test -> AWS -> Producción
+
+9. CLASIFICACIÓN BÁSICA
+-----------------------
+
+Python         -> Lenguaje de programación
+JavaScript     -> Lenguaje de programación
+Ubuntu         -> Sistema operativo / distribución Linux
+Git            -> Control de versiones
+Docker         -> Contenedores
+DNS            -> Networking / sistema de nombres
+HTTPS          -> Networking / comunicación segura
+SSH            -> Networking / protocolo
+AWS            -> Cloud
+GCP            -> Cloud
+Azure          -> Cloud
+AWS Lambda     -> Serverless
+Jenkins        -> CI/CD
+GitHub Actions -> CI/CD
+Prometheus     -> Monitoreo
+
+10. DIFERENCIAS IMPORTANTES
+---------------------------
+
+Herramienta != Protocolo != Lenguaje != Plataforma != Servicio
+
+Python       -> lenguaje
+Git          -> herramienta de control de versiones
+DNS          -> sistema/protocolo de nombres
+Docker       -> plataforma/herramienta de contenedores
+AWS          -> proveedor Cloud
+AWS Lambda   -> servicio serverless
+Jenkins      -> herramienta CI/CD
+Prometheus   -> herramienta de monitoreo
+
+11. CONCEPTOS ADICIONALES
+-------------------------
+
+Node.js:
+No es un lenguaje de programación. Es un runtime/entorno de ejecución para
+JavaScript.
+
+Linux:
+Linux es técnicamente un kernel. Ubuntu es una distribución basada en Linux.
+
+SSL/TLS:
+Son protocolos relacionados con la seguridad de las comunicaciones.
+Actualmente TLS es el protocolo utilizado; SSL es un término histórico.
+
+Cloudflare:
+Es una plataforma/proveedor de servicios de Internet y Cloud. Dispone de
+servicios serverless, pero Cloudflare como plataforma no debe clasificarse
+simplemente como "Serverless".
+
+GitLab CI:
+Es una herramienta/plataforma de CI/CD.
+
+12. ORDEN GENERAL DEL FLUJO
+----------------------------
+
+Commit
+  ->
+Pipeline
+  ->
+Build
+  ->
+Test
+  ->
+Verificaciones de Calidad
+  ->
+Staging
+  ->
+Producción
+
+NOTA:
+En pipelines reales, el orden exacto puede variar según la configuración.
+Test y Quality, por ejemplo, pueden ejecutarse en diferente orden o incluso
+en paralelo.
+
+13. PRINCIPALES ERRORES A EVITAR
+--------------------------------
+
+- No decir que el Pipeline es un "revisor".
+- No decir que un Commit necesariamente empaqueta el código.
+- No confundir Build con Pipeline.
+- No considerar Test y Quality como exactamente lo mismo.
+- No afirmar que Agile necesariamente genera demoras por tener muchos equipos.
+- No considerar Cloud y CI/CD como la misma categoría.
+- No considerar Node.js como lenguaje de programación.
+- No considerar Linux exactamente como un sistema operativo completo.
+
+14. CONCLUSIÓN DE LA SEMANA 1
+-----------------------------
+
+DevOps no consiste solamente en utilizar herramientas.
+
+DevOps combina cultura, colaboración, procesos, automatización y mejora
+continua para conseguir una entrega de software más rápida, confiable y
+repetible.
+
+Debo mantener clara la diferencia entre:
+
+Commit    -> registro del cambio.
+Pipeline  -> flujo automatizado.
+Build     -> preparación/compilación/empaquetado.
+Test      -> comprobación del funcionamiento.
+Quality   -> comprobación de criterios de calidad.
+Staging   -> validación previa a producción.
+Production-> ambiente donde se entrega el cambio al usuario.
+
+15. CONTROL DE FOCO
+-------------------
+
+Estas correcciones sirven para reforzar la Semana 1.
+
+NO necesito estudiar todavía en profundidad:
+- Kubernetes.
+- Terraform.
+- Docker avanzado.
+- Jenkins avanzado.
+- AWS avanzado.
+- Microservicios.
+- Service Mesh.
+- DevSecOps.
+- Prometheus/Grafana avanzado.
+
+Si encuentro un tema interesante que pertenece a una semana futura,
+lo registraré en BACKLOG.md y continuaré con el contenido actual.
+
+FIN DEL REGISTRO
