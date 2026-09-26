@@ -14,12 +14,16 @@ cd dia4
 y
 cd /home/vboxuser/devops-lab/semana2/dia4
 
+R: la diferencia es que al efectuar el primer comando como estoy ya en el directorio de semana 2, voy a llegar directo, pero con el segundo comando si me encontrara en otra ruta completamente distinta, podría llegar de forma directa, a estos comandos se le podría llamar, la ruta concatenada y ruta directa
+
 2. Regresar al directorio anterior
 Si estás ubicado en:
 /home/vboxuser/devops-lab/semana2/dia4
 
 ¿Qué comando debes utilizar para regresar a:
 /home/vboxuser/devops-lab/semana2
+
+R: Para volver se puede efectuar 2 comandos, el comando cd .., el cual permite volver al directorio anterior y el cd /home/vboxuser/devops-lab/semana2, el cual es la ruta directa, pero esta es mucho mas ineficiente
 
 3. Subir dos niveles
 Si estás ubicado en:
@@ -28,19 +32,29 @@ Si estás ubicado en:
 ¿Qué comando puedes utilizar para llegar directamente a:
 /home/vboxuser/devops-lab
 
+R: puedo efectua el comando cd ~/devops-lab para llegar de forma directa, ya que el carácter ~ en Linux es tomando como el HOME, y en este caso el directorio devops-labs, esta después del HOME
+
 4. Utilizar el directorio actual
 ¿Qué símbolo representa el directorio actual en Linux?
 
+R: el símbolo que representa es .(punto), ya que cuando efectuamos el comando cd ., este permanece en el actual
+
 Después, escribe un comando que permita acceder a dia4 utilizando el símbolo del directorio actual, suponiendo que estás ubicado en:
 /home/vboxuser/devops-lab/semana2
+
+R: el comando a utilizar seria el cd ./dia4/
 
 5. Consultar contenido sin cambiar de ubicación
 Si estás ubicado en tu HOME, ¿cómo puedes mostrar el contenido del directorio semana2 sin entrar en él?
 
 Utiliza solamente el comando ls.
 
+R: Se puede realizar con el comando ls devops-lab/dia4
+
 6. Regresar al HOME
-Escribe dos formas diferentes de volver directamente al HOME del usuario actual.
+Escribe dos formas diferentes de volver direms ctamente al HOME del usuario actual.
+
+R: Se puede efectuar con el comando cd ~ o escribiendo la ruta directa del HOME, en este caso cd /home/vboxuser
 
 7. Analizar una ruta relativa
 Si estás ubicado en:
@@ -51,20 +65,29 @@ Si estás ubicado en:
 
 sin usar una ruta absoluta?
 
+R: Utilizando el comando cd ../semana2/ejercicios
+
 8. Analizar el uso de ~
 ¿Qué ruta representa normalmente el símbolo ~ si el usuario actual se llama juan?
 
+R: la ruta si uno utiliza ese carácter debería ser /home/juan/
+
 ¿Qué resultado esperarías después de ejecutar?
-cd ~
+cd ~ 
 pwd
+
+R: cd ~, me lleva a la ruta del home, mas específicamente a /home/[nombreusuario]
+pwd, me entrega la ruta del directorio donde me encuentro actualmente
 
 9. Comparar ls y ls -a
 ¿Cuál es la diferencia entre ejecutar los siguientes comandos?
-ls
 
-ls -a
+R: ls: puedes observar todos los archivos y directorios visibles desde la visual normal del usuario
+
+R: ls -a: se pueden observar todos los archivos que se puedan mantener ocultos
 
 ¿Por qué algunos archivos aparecen solamente con ls -a?
+R: porque estos archivos son archivos que el usuario o sistema los dejo ocultos, o son mas bien procesos que se puedan estar ejecutando en segundo plano 
 
 10. Verificar una secuencia de navegación
 Partiendo desde tu HOME, escribe los comandos necesarios para realizar esta secuencia:
@@ -78,6 +101,16 @@ Partiendo desde tu HOME, escribe los comandos necesarios para realizar esta secu
 
 Utiliza rutas relativas.
 
+R: Comandos utilizados
+0.- cd ~ (para partir desde HOME)
+1.- cd devops-lab
+2.- cd semana2
+3.- cd dia4
+4.- pwd donde se obtiene /home/vboxuser/devops-lab/semana2/dia4
+5.- cd ~/devops-lab
+6.- cd documentos
+7.- pwd donde se obtiene /home/vboxuser/devops-lab/documentos
+
 Nivel avanzado
 --------------
 
@@ -90,20 +123,28 @@ Partiendo desde:
 
 utilizando un solo comando cd y una ruta relativa?
 
+R: Utilizando el comando cd ~/devops-lab/documentos se podría llegar
+
 12. Navegación con una sola ruta absoluta
 Partiendo desde cualquier ubicación, escribe un comando que te lleve directamente a:
 /home/vboxuser/devops-lab/semana2/ejercicios
 
 ¿Qué parte de la ruta hace que sea una ruta absoluta?
 
+R: utilizando el comando cd ~/devops-lab/semana2/ejercicios, esto se tomaría como ruta absoluta, ya que estoy definiendo de forma completa cual es la ruta a la que quiero llegar
+
 13. Interpretar varios puntos
 Explica qué ocurre al ejecutar el siguiente comando:
 cd ../../
+
+R: permite devolver 2 directorios atrás 
 
 si estás ubicado en:
 /home/vboxuser/devops-lab/semana2/dia4
 
 ¿En qué directorio terminarías?
+
+R: si doy ese comando quedaría en el directorio /home/vboxuser/devops-lab
 
 14. Combinar . y ..
 Si estás ubicado en:
@@ -112,8 +153,10 @@ Si estás ubicado en:
 ¿Qué resultado obtendrías al ejecutar?
 cd .././ejercicios
 pwd
+R: al ejecutar esos comando se obtendría la ruta /home/vboxuser/devops-lab/semana2/ejercicios 
 
 Explica paso a paso cómo se interpreta la ruta.
+R: lo que ocurre al ejecutar ese comando cd es, los 2 puntos indican que se debe devolver al directorio anterior, en este caso es semana 2, luego el punto solo, indica quedarse en el directorio actual, y después de eso indica ingresar en el directorio ejercicio
 
 15. Detectar un error de navegación
 Un estudiante ejecuta estos comandos:
@@ -124,6 +167,8 @@ cd dia4
 El sistema muestra un error en el segundo comando.
 
 ¿Cuál podría ser la causa del error? ¿Qué debería hacer el estudiante antes de ejecutar cd semana2?
+R: La causa del error es simple, el segundo comando cd semana2 no corresponde, ya que ese directorio se encuentra ingresado en el directorio devops-lab, el cual seria el que esta después de la ruta home.
+Lo que debería hacer el estudiante primer es ingresar al directorio devops-lab y después continuar con los comandos indicados (semana2 y después dia4)
 
 16. Resolver una ruta sin conocer el nombre de usuario
 Necesitas llegar al directorio dia4, pero no sabes cuál es el nombre del usuario actual.
@@ -138,6 +183,18 @@ El procedimiento debe permitirte llegar a:
 
 sin escribir literalmente nombre_usuario.
 
+R: En el siguiente orden se ejecutarían los siguientes comandos
+1.- cd ~, al efectuar este comando puedo ubicarme en mi ruta home
+2.- pwd, con esto puedo obtener la ruta donde me encuentro en mi home y además mi nombre de usuario
+3.- ls para conocer el directorio creado en home con la finalidad de verificar ruta
+4.- cd devops-lab
+5.- ls, conocer que tengo dentro del directorio devops-lab
+6.- ls semana2, verificar que directorios se encuentran
+7.- ls documentos, verificar que directorios se encuentran
+8.- cd semana2
+9.- ls semana2, verificar que directorios tengo aca
+10.- cd dia4, dando este ultimo comando, estaríamos ya en la ruta que necesitamos
+
 17. Analizar una ruta con varios componentes
 ¿Qué ruta final se obtiene al ejecutar la siguiente secuencia desde tu HOME?
 cd devops-lab/semana2/dia4
@@ -145,6 +202,10 @@ cd ../../documentos
 pwd
 
 Explica qué significa cada uno de los dos elementos ..
+
+R: Según como nos indican desde nuestro HOME, 
+1.- el comando pwd nos devuelve la ruta /home/vboxuser/devops-lab/documentos, 
+Con el primer comando cd, se esta colocando de forma absoluta la ruta donde quiere llegar, y con el segundo comando cd, esta efectuando 2 retrocesos de directorio, y según donde esta, ingresar al directorio mencionado
 
 18. Crear y comprobar una ruta de navegación
 Partiendo desde tu HOME, escribe los comandos necesarios para:
@@ -162,6 +223,15 @@ ls
 pwd
 ~
 
+R: comandos indicados
+1.- cd devops-lab
+2.- ls
+3.- cd semana2
+4.- ls
+5.- cd ejercicios
+6.- pwd
+7.- cd ~
+
 19. Comparar dos secuencias
 Determina si las siguientes secuencias terminan en el mismo directorio.
 
@@ -173,6 +243,8 @@ cd dia4
 
 Secuencia B
 cd /home/vboxuser/devops-lab/semana2/dia4
+
+R: efectivamente, tantas la secuencia A o B, llega al mismo directorio, pero con una diferencia, en la secuencia A se están utilizando rutas relativas y en la secuencia B, se están utilizando rutas absolutas
 
 ¿Qué condición debe cumplirse para que ambas terminen exactamente en el mismo lugar?
 
@@ -198,5 +270,20 @@ pwd
 ~
 ..
 .
+
+R. Los comandos utilizados son 
+1.- cd ~
+2.- cd devops-lab
+3.- ls
+4.- cd semana2
+5.- cd dia4
+6.- pwd
+7.- cd ../..
+8.- cd documentos
+9.- pwd
+10.- cd ~
+11.- cd ~/devops-lab/semana2/ejercicios
+12.- pwd
+
 
 Nota: En el punto 11 debes reemplazar vboxuser por el nombre real de tu usuario.
