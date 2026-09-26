@@ -1,0 +1,202 @@
+Preguntas de práctica - Día 4: Navegación en Linux
+=================================================
+
+Nivel medio
+-----------
+
+1. Diferenciar rutas
+Si estás ubicado en:
+/home/vboxuser/devops-lab/semana2
+
+¿Qué diferencia existe entre estas dos rutas?
+cd dia4
+
+y
+cd /home/vboxuser/devops-lab/semana2/dia4
+
+2. Regresar al directorio anterior
+Si estás ubicado en:
+/home/vboxuser/devops-lab/semana2/dia4
+
+¿Qué comando debes utilizar para regresar a:
+/home/vboxuser/devops-lab/semana2
+
+3. Subir dos niveles
+Si estás ubicado en:
+/home/vboxuser/devops-lab/semana2/dia4
+
+¿Qué comando puedes utilizar para llegar directamente a:
+/home/vboxuser/devops-lab
+
+4. Utilizar el directorio actual
+¿Qué símbolo representa el directorio actual en Linux?
+
+Después, escribe un comando que permita acceder a dia4 utilizando el símbolo del directorio actual, suponiendo que estás ubicado en:
+/home/vboxuser/devops-lab/semana2
+
+5. Consultar contenido sin cambiar de ubicación
+Si estás ubicado en tu HOME, ¿cómo puedes mostrar el contenido del directorio semana2 sin entrar en él?
+
+Utiliza solamente el comando ls.
+
+6. Regresar al HOME
+Escribe dos formas diferentes de volver directamente al HOME del usuario actual.
+
+7. Analizar una ruta relativa
+Si estás ubicado en:
+/home/vboxuser/devops-lab/documentos
+
+¿Qué comandos debes utilizar para llegar a:
+/home/vboxuser/devops-lab/semana2/ejercicios
+
+sin usar una ruta absoluta?
+
+8. Analizar el uso de ~
+¿Qué ruta representa normalmente el símbolo ~ si el usuario actual se llama juan?
+
+¿Qué resultado esperarías después de ejecutar?
+cd ~
+pwd
+
+9. Comparar ls y ls -a
+¿Cuál es la diferencia entre ejecutar los siguientes comandos?
+ls
+
+ls -a
+
+¿Por qué algunos archivos aparecen solamente con ls -a?
+
+10. Verificar una secuencia de navegación
+Partiendo desde tu HOME, escribe los comandos necesarios para realizar esta secuencia:
+1. Entrar en devops-lab.
+2. Entrar en semana2.
+3. Entrar en dia4.
+4. Mostrar la ubicación actual.
+5. Regresar a devops-lab.
+6. Entrar en documentos.
+7. Mostrar la ubicación actual.
+
+Utiliza rutas relativas.
+
+Nivel avanzado
+--------------
+
+11. Navegación con una sola ruta relativa
+Partiendo desde:
+/home/vboxuser/devops-lab/semana2/dia4
+
+¿Puedes llegar directamente a:
+/home/vboxuser/devops-lab/documentos
+
+utilizando un solo comando cd y una ruta relativa?
+
+12. Navegación con una sola ruta absoluta
+Partiendo desde cualquier ubicación, escribe un comando que te lleve directamente a:
+/home/vboxuser/devops-lab/semana2/ejercicios
+
+¿Qué parte de la ruta hace que sea una ruta absoluta?
+
+13. Interpretar varios puntos
+Explica qué ocurre al ejecutar el siguiente comando:
+cd ../../
+
+si estás ubicado en:
+/home/vboxuser/devops-lab/semana2/dia4
+
+¿En qué directorio terminarías?
+
+14. Combinar . y ..
+Si estás ubicado en:
+/home/vboxuser/devops-lab/semana2/dia4
+
+¿Qué resultado obtendrías al ejecutar?
+cd .././ejercicios
+pwd
+
+Explica paso a paso cómo se interpreta la ruta.
+
+15. Detectar un error de navegación
+Un estudiante ejecuta estos comandos:
+cd ~
+cd semana2
+cd dia4
+
+El sistema muestra un error en el segundo comando.
+
+¿Cuál podría ser la causa del error? ¿Qué debería hacer el estudiante antes de ejecutar cd semana2?
+
+16. Resolver una ruta sin conocer el nombre de usuario
+Necesitas llegar al directorio dia4, pero no sabes cuál es el nombre del usuario actual.
+
+Escribe un procedimiento utilizando únicamente:
+pwd
+cd
+ls
+
+El procedimiento debe permitirte llegar a:
+/home/nombre_usuario/devops-lab/semana2/dia4
+
+sin escribir literalmente nombre_usuario.
+
+17. Analizar una ruta con varios componentes
+¿Qué ruta final se obtiene al ejecutar la siguiente secuencia desde tu HOME?
+cd devops-lab/semana2/dia4
+cd ../../documentos
+pwd
+
+Explica qué significa cada uno de los dos elementos ..
+
+18. Crear y comprobar una ruta de navegación
+Partiendo desde tu HOME, escribe los comandos necesarios para:
+1. Entrar en devops-lab.
+2. Mostrar su contenido.
+3. Entrar en semana2.
+4. Mostrar su contenido.
+5. Entrar en ejercicios.
+6. Comprobar la ubicación actual.
+7. Regresar directamente al HOME.
+
+Utiliza únicamente:
+cd
+ls
+pwd
+~
+
+19. Comparar dos secuencias
+Determina si las siguientes secuencias terminan en el mismo directorio.
+
+Secuencia A
+cd ~
+cd devops-lab
+cd semana2
+cd dia4
+
+Secuencia B
+cd /home/vboxuser/devops-lab/semana2/dia4
+
+¿Qué condición debe cumplirse para que ambas terminen exactamente en el mismo lugar?
+
+20. Desafío completo de navegación
+Comienza desde cualquier ubicación y realiza la siguiente secuencia:
+1. Regresa al HOME utilizando ~.
+2. Entra en devops-lab.
+3. Muestra su contenido.
+4. Entra en semana2.
+5. Entra en dia4.
+6. Comprueba tu ubicación.
+7. Regresa a devops-lab utilizando solamente ..
+8. Entra en documentos.
+9. Comprueba tu ubicación.
+10. Regresa al HOME.
+11. Vuelve directamente a semana2/ejercicios usando una ruta absoluta.
+12. Comprueba tu ubicación.
+
+Restricción: no utilices find, grep, tree, pwd para navegar, ni comandos distintos de:
+cd
+ls
+pwd
+~
+..
+.
+
+Nota: En el punto 11 debes reemplazar vboxuser por el nombre real de tu usuario.
