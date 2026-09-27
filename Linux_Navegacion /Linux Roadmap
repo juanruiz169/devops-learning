@@ -1,0 +1,18 @@
+Linux Roadmap:
+
+- Navegaciones básicas: Comandos Basicos, movimientos de archivos y directorios, creación y eliminación de archivos
+- Edición de Archivos: Comandos VIM y NANO
+- Shell y otros Basicos: pantalla de comando, Variables de entorno, Comandos de ayuda, redirecciones, super-usuario
+- Trabajando con archivos: Permisos de archivos, archivar y comprimir, copiar y renombrar, 
+- Procesamiento de texto
+- Revisión de servidor:  Logs de utenticacion, servicios corriendo, disponibilidad de memoria y disco
+- Gestion de procesos: procesos de fondo y primer plano, listando procesos, señales de procesos, matar procesos, procesos prioritarios, creación de procesos hijos
+- Gestion de usuarios: Creación, eliminación y actualización, usuarios y grupos, manejo de permisos
+- Gestion del servicio (systemd): Creación de nuevos servicios, Revisión de servicio de logs, inciar y detener servicios, revisar status del servicio
+- administración de paquetes: repositorio de paquetes, buscar e instalar paquetes, listar paquetes instalados, instalar, remover y actualizar paquetes
+- Discos y archivos de sistema
+- booting Linux: boot loaders y logs
+- Networking
+- Shell programming
+- Troubleshooting
+- Contenedores
