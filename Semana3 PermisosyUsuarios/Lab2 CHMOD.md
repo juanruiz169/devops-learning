@@ -5,6 +5,7 @@ Existen 2 forma de poder aplicar el comando chmod donde se realizo una manera co
 1.- Directorio
   en el directorio al momento de crearlo mantenia la siguiente configuracion
   drwxr-xr-x PruebaPer (Se omite lo que viene al medio, ya que no va al caso)
+  
   SE puede encontrar 4 tipos 
     a (all) , u (user), g(group), o(others)
     2 formas 
