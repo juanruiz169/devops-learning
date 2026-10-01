@@ -8,8 +8,10 @@ Existen 2 forma de poder aplicar el comando chmod donde se realizo una manera co
   
   S puede encontrar 4 tipos 
     - a (all) , u (user), g(group), o(others)
+  
   2 formas 
    -  (+) (agregar permiso), (-) (quitar permiso)
+  
   3 permisos
     - r (read), w(write), x(execute)
 
