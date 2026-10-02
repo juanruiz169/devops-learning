@@ -1,0 +1,30 @@
+En entorno Personal de Maquina virtual se crearon los usuarios 
+
+Juan
+Pedro 
+Maria
+
+Los cuales se asignarons a los grupos 
+
+GrupoDesarrollo
+QA
+ADministracion
+
+Asi respectivamente
+
+Los comandos utilizados para realizar estas acciones son 
+
+sudo useradd juan: Este comando permite crear el usuario esperado
+sudo groupadd GrupoDesarrollo: Este Comando permite crear el grupo deseado
+sudo usermod -aG juan GrupoDesarrollo: Con este comando estamos indicando que el usuario pertenece a ese grupo
+
+Se realizaron otras pruebas como crear directorios con archivos
+sudo mkdir [directorio]
+
+Al directorio principal se le modifico quien era el grupo y usuario owner
+sudo chown juan [directorio]
+sudo chgrp GrupoDesarrollo [directorio]
+
+Luego se modificaron los permisos para que
+El usuario OWNER tuviera control total, los usuarios pertenecientes al grupo pudieran leer y escribir en el directorio y las personas externas, solo pudieran leer
+sudo chmod 764 [directorio]
