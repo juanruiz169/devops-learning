@@ -1,0 +1,50 @@
+Para las pruebas de este laboratorio se han realizado las siguientes acciones previas a lo necesario
+
+1.- Dentro de la rama Devops-lab, se creo el directorio Semana3
+  sudo mkdir Semana3
+2.- Dentro de la rama SEmana3, se creo el directorio dia4
+  sudo mkdir dia4
+3.- Dentro del directorio dia4 se realizaron los siguientes comandos
+  sudo touch Archivo.txt
+  sudo touch Prueba.txt
+  sudo useradd Karen
+  sudo useradd Dante
+  sudo useradd Samara
+  sudo groupadd Bodega
+  sudo groupadd Escuela
+  sudo mkdir BodegaCod
+  sudo mkdir BodegaDoc
+  sudo mkdir EscuelaCod
+  sudo mkdir EscuelaDoc
+4.- Los usuarios creados seran anexados a los siguientes grupos
+  Karen ----> Bodega
+  Samara ----> Escuela
+  Dante ----> Escuela
+  Comandos
+    sudo usermod -aG Bodega Karen   ----- Comando permite asignar el usuario karen a grupo Bodega
+    sudo usermod -aG Escuela Dante ----- Comando permite asignar el usuario Dante al grupo Escuela
+    sudo usermod -aG Escuela Samara ----- Comando permite asignar el usuario Samara al grupo Escuela
+
+Laboratorio Dia 4
+Segun los requerimientos de este laboratorio se deben hacer pruebas con los comandos chown y el chgrp
+
+1.- Se modificaran el owner y el grupo de los directorios BodegaCod y BodegaDoc al usuario/grupo  Karen/Bodega
+  - sudo chown Karen BodegaCod ------ Este comando cambia el owner del directorio de root a Karen
+  - sudo chown Karen BodegaDoc ------ Este comando cambia el owner del directorio de root a Karen
+  - sudo chgrp Bodega BodegaCod ------ Este comando cambia el grupo del directorio de root a Bodega
+  - sudo chgrp Bodega BodegaDoc ------ Este comando cambia el grupo del directorio de root a Bodega
+2.- Se modificaron el owner y el grupo del directorio EscuelaCod al usuario/grupo  Samara/Escuela
+  - sudo chown Samara EscuelaCod ------ Este comando cambia el owner del directorio de root a Samara
+  - sudo chgrp Escuela Escuela Cod ------ Este comando cambia el grupo del directorio de root a EScuela
+3.- Se modificaron el owner y el grupo del directorio EscuelaDoc al usuario/grupo Dante/Escuela
+  - sudo chown Dante EscuelaDoc ----- ESte comando cambia el owner del directorio de root a Dante
+  - sudo chgrp Escuela EscuelaDoc ----- Este comando cambia el grupo del directorio de root a Escuela
+
+
+En adicion se modificaron los permisos de los directorios asignados al grupo Bodega con el siguiente comando
+  - sudo chmod 760 BodegaCod
+  - sudo chmod 760 BodegaDoc
+Estos comandos se dejaron con la siguiente finalidad
+  1.- 7: Al owner del directorio se le da completo permisos sobre el directorio
+  2.- 6: Al grupo se le asignaron los permisos de escritura y lectura sobre el directorio
+  3.- 0: Al cualquiera no sea el owner o pertenezca al grupo, no tiene ningun permiso sobre dicho directorio
