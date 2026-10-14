@@ -1,0 +1,65 @@
+Documentación Lab Dia 1, Semana 5
+
+Conceptos principales
+
+Dirección IP: Dirección que permite identificar una interfaz de red dentro de una red IP
+
+Gateway o puerto de enlace: Es donde un equipo envia trafico cuando necesita alcanzar una red externa a su red local
+
+Puerto: Utilizado por protocolos de transporte, como TCP y UPD, para identificar un punto de comunicación asociado a una aplicación o servicio
+
+EL mapa de guía de comunicación
+
+IP ----> Gateway ----> Puerto
+
+Comandos: 
+
+ip addr ----> identifica la IP local con toda la data
+ip -br addr ----> entrega las líneas lo y enp0s3 local
+
+ip route ----> muestra las rutas que Linux utiliza para decidir por donde enviar el trafico de red
+
+Pistas para tu análisis:
+
+default: ruta predeterminada para destinos que no tienen una ruta más específica.
+via: dirección del siguiente salto o gateway.
+dev: interfaz por la que se enviará el tráfico.
+src: dirección de origen que se utilizará normalmente para esa ruta.
+
+
+ss ----> permite examinar los sockets de red
+
+ss -tuln
+
+-t: muestra los sockets TCP
+-u: Muestra sockets UDP
+-l: Muestra sockets en escucha
+-n: Muestra direcciones y puertos numéricos, sin intentar traducirlos a nombres
+
+Documentación del laboratorio
+
+1.- ip -br addr
+	- enp0s3	UP 	10.0.2.15/24
+
+2.- ip route
+	- via: 10.0.2.2
+	- dev: enp0s3, proto dhcp
+	- src: 10.0.2.15
+	
+3.- Análisis de puertos en escucha
+
+Comando ejecutado: ss -tuln
+
+Observaciones:
+
+- Se identificaron sockets TCP en estado LISTEN.
+- Se observaron direcciones de loopback IPv4 e IPv6.
+- Se encontraron sockets TCP asociados a los puertos 53 y 631.
+- También se observaron entradas UDP en estado UNCONN.
+- La salida no mostró nombres de procesos porque el comando no incluía la opción -p.
+
+Comando ejecutado: sudo ss -tulpn.
+
+- Procesos identificados: systemd-resolve, cupsd, python3, avahi-daemon y chronyd.
+- PID y puertos asociados, según las entradas observadas.
+- Diferencias entre las direcciones IPv4 e IPv6.
