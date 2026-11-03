@@ -1,0 +1,37 @@
+Estudio Semana 6 dia 1
+Contenido: LAN/WAN, IP, MAC, router, switch, cliente/servidor.
+
+- Lan: Red local hogar o trabajo
+- WAN: Red global o como se define internet en si 
+
+- IP: como puedo identificar mi equipo para comunicarse con otro, este valor puede cambiar
+- MAC: Valor único de la dirección física de la tarjeta de red, solo se usa de forma local
+
+- Router: permite la conectividad desde redes distintas, y decide hacia donde enviar paquetes
+- Switch: conecta equipos dentro de la misma red
+
+- Cliente: Realiza la consulta al servidor
+- Servidor: Responde con la información solicitada del cliente
+
+Laboratorio
+Tarea: Crear esquema de red Domestica/virtual
+
+1.-Consultar IP y MAC
+	ip addr show
+	Se obtiene la IP 10.0.2.15 para conectividad externa y 127.0.0.1 para conectividad local
+	ip link show
+	Permite identificar el estado de los conectores tanto locales como externos	
+
+2.- Identificar Gateway
+	ip route | grep default
+	
+3.- comprobar si alcanzamos la IP del Gateway
+	ping -c 3 10.0.2.2
+	ping -c 3 10.0.2.15
+	Se realiza el ping a red por defecto y a red externa
+
+	ip neigh
+	Muestra el listado de las maquinas a las cuales puede llegar 
+
+4.- 
+	
