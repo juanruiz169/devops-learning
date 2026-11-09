@@ -39,3 +39,17 @@ Comandos efectuados
 	UDP: podemos identificar que tenemos los puertos 323, 5353:53
 	TCP: SE logra idenficar 53,22,80, 631,22
 	
+2.- Se abren 3 terminales distintos para probar la conectividad, tipo, servidor, cliente, observador
+# Terminal 1
+nc -l 9000
+# Terminal 2 (escribe un texto y Enter)
+nc localhost 9000
+# Terminal 3
+ss -tn | grep 9000
+
+3.- Se ocuparan 2 terminales, probando la conectividad entre ambas y las respuestas interna
+# Terminal 1
+nc -u -l 9001
+# Terminal 2
+echo hola | nc -u -w1 localhost 9001
+ss -uln | grep 9001
