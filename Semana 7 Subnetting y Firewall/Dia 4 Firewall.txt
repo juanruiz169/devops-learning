@@ -1,0 +1,187 @@
+Semana 7 Dia 3 Routing
+Contenido: Concepto de regla, origen, destino, puerto y acción
+
+1. ¿Qué es un Firewall?
+Un Firewall (cortafuegos) es un sistema de seguridad que controla el tráfico de red que entra y sale de un equipo o servidor.
+
+Su función es decidir qué comunicaciones están permitidas y cuáles deben bloquearse.
+
+Por ejemplo, imagina que tienes un servidor Ubuntu donde instalaste Nginx.
+
+Quieres que:
+- Los usuarios puedan acceder a tu página web.
+- Los administradores puedan conectarse mediante SSH.
+- Las conexiones no autorizadas sean bloqueadas.
+
+El firewall permite establecer esas condiciones.
+Ejemplo de un servidor protegido
+
+Internet: Solicitudes de otros equipos
+
+Firewall:
+	- HTTP 80: permitir
+	- HTTPS 443: permitir
+	- Otros: bloquear
+
+Servidor Ubuntu: Nginx / Aplicaciones
+
+2. ¿Qué elementos componen una regla de Firewall?
+Una regla de firewall normalmente considera cinco elementos:
+	Elemento	¿Qué significa?
+	Origen		Desde dónde viene la conexión.
+	Destino		Hacia dónde se dirige.
+	Puerto		Qué puerto intenta utilizar.
+	Protocolo	Qué tipo de comunicación utiliza (TCP o UDP).
+	Acción		Qué debe hacer el firewall (ALLOW o DENY).
+
+Veamos un ejemplo:
+Regla de ejemplo
+ALLOW
+
+	Elemento	Valor
+	Origen		192.168.1.50
+	Destino		Servidor Ubuntu
+	Puerto		22
+	Protocolo	TCP
+	Acción		Permitir
+
+Otros puertos que debes conocer:
+	Puerto	Servicio	Protocolo habitual
+	22	SSH		TCP
+	53	DNS		UDP y TCP
+	80	HTTP		TCP
+	443	HTTPS		TCP
+	3306	MySQL		TCP
+	5432	PostgreSQL	TCP
+
+Puerto	Servicio	Protocolo habitual
+22	SSH	TCP
+53	DNS	UDP y TCP
+80	HTTP	TCP
+443	HTTPS	TCP
+3306	MySQL	TCP
+5432	PostgreSQL	TCP
+
+Estos son puertos habituales, aunque algunos servicios pueden configurarse para utilizar otros.
+
+3. ¿Qué es la política por defecto?
+La política por defecto define qué sucede cuando una conexión no coincide con ninguna regla específica.
+
+Existen dos enfoques:
+
+A. Permitir todo y bloquear lo necesario (Allow-list inversa o enfoque permisivo).
+- Se permite todo el tráfico.
+- Se bloquean únicamente las conexiones que consideramos peligrosas.
+El problema es que una conexión no contemplada podría quedar permitida.
+
+B. Bloquear todo y permitir únicamente lo necesario (Allow-list).
+- Se bloquea todo el tráfico por defecto.
+- Se crean reglas para permitir las conexiones necesarias.
+Este segundo enfoque suele ser más seguro porque reduce las comunicaciones que pueden alcanzar el servidor.
+
+¿Qué significa?
+
+Permitir que el equipo 192.168.1.50 se conecte al servidor Ubuntu mediante SSH, utilizando el puerto TCP 22.
+
+Por ejemplo:
+Tráfico				Acción
+SSH desde IP administrativa	ALLOW
+HTTP puerto 80			ALLOW
+HTTPS puerto 443		ALLOW
+Cualquier otro tráfico entrante	DENY
+
+Importante: una política restrictiva debe planificarse correctamente. Si bloqueas SSH sin permitir antes el acceso administrativo necesario, podrías perder el acceso remoto al servidor.
+
+4. ¿Por qué importa el orden de las reglas?
+Este punto es fundamental.
+
+En herramientas como iptables, las reglas se recorren en orden y, cuando una regla terminal coincide, se aplica su acción.
+
+Imagina que tenemos estas dos reglas:
+Orden	Regla	Acción
+1	Bloquear todas las conexiones desde 192.168.1.50	DENY
+2	Permitir SSH desde 192.168.1.50	ALLOW
+
+¿Qué sucede si 192.168.1.50 intenta conectarse mediante SSH?
+
+DENY
+ La primera regla coincide con el origen y bloquea la conexión. La segunda nunca llega a evaluarse para ese paquete.
+
+Por eso, el orden de las reglas es importante.
+
+Si queremos permitir SSH desde esa IP y bloquear el resto de su tráfico, debemos organizar las reglas de manera que la excepción se evalúe antes del bloqueo general.
+
+Una precisión: UFW también gestiona reglas y prioridades, pero no debes asumir que todas las reglas se comportan exactamente igual que una lista simple de iptables. Depende de cómo se hayan configurado.
+
+5. ¿Qué significa Stateful?
+Un firewall stateful es aquel que mantiene información sobre las conexiones que están ocurriendo.
+
+Por ejemplo, imagina que tu servidor recibe una solicitud SSH desde otro equipo.
+1. El equipo cliente inicia la conexión.
+2. El firewall permite la conexión entrante.
+3. El servidor responde al cliente.
+4. El firewall reconoce que esa respuesta pertenece a una conexión previamente permitida.
+Por eso, normalmente no necesitas crear una regla independiente para permitir cada paquete de respuesta.
+
+Esto es lo que se conoce como seguimiento del estado de las conexiones (connection tracking).
+Ingress y Egress
+Son dos conceptos que debes diferenciar:
+- Ingress: tráfico que entra al servidor.
+- Egress: tráfico que sale del servidor.
+
+Ejemplo:
+Situación						Tipo de tráfico
+Un usuario se conecta a tu servidor por SSH		Ingress
+Un usuario visita tu página web alojada en Nginx	Ingress
+Tu servidor consulta un DNS				Egress
+Tu servidor descarga actualizaciones de Ubuntu		Egress
+
+El tráfico entrante y saliente se puede controlar mediante políticas independientes.
+
+6. Herramientas de Firewall en Linux y DevOps
+Existen diferentes herramientas para administrar las reglas de seguridad.
+
+
+UFW (Uncomplicated Firewall)
+Es una herramienta sencilla para administrar reglas de firewall en Linux. Permite trabajar con comandos fáciles de entender.
+Ejemplo conceptual: permitir SSH o HTTPS.
+
+
+iptables / nftables
+Son herramientas de administración de filtrado de paquetes en Linux. Permiten configurar reglas más detalladas y complejas.
+nftables es el framework moderno que reemplaza progresivamente a iptables.
+
+
+Security Groups (Cloud)
+Son controles de tráfico asociados a recursos de nube, como instancias de máquinas virtuales. 
+Por ejemplo, en AWS permiten definir qué conexiones entrantes y salientes están autorizadas.
+
+Laboratorio
+Tarea del plan: Analizar reglas sin modificar sistemas críticos
+
+1.- sudo ufw status verbose: status inactive
+sudo iptables -L -n -v: INPUT, FORWARD Y OUTPUT, a esto se le suma las cabeceras vacias sin data 
+sudo nft list ruleset: sin información 
+
+2.-	Analiza este conjunto de ejemplo (el orden es la prioridad):
+	1  ALLOW  tcp  desde 0.0.0.0/0     hacia puerto 80
+	2  ALLOW  tcp  desde 0.0.0.0/0     hacia puerto 443
+	3  ALLOW  tcp  desde 10.0.0.0/24   hacia puerto 22
+	4  DENY   tcp  desde 0.0.0.0/0     hacia puerto 22
+	5  DENY   all  desde 0.0.0.0/0     hacia todo
+3.- 	Responde: 
+	a) ¿10.0.0.15 puede entrar por SSH? 
+	Si puede ingresar
+	b) ¿203.0.113.9 puede entrar por SSH? 
+	No tiene accedo, por la Dirección entregada se puede observar que tiene denegado el acceso
+	c) ¿cualquiera puede ver la web por HTTPS? 
+	Si es correcto
+	d) ¿qué pasaría si la regla 4 estuviera antes que la 3? 
+	Ninguna consulta podría ingresar a través de SSH
+	
+
+ 
+
+
+	
+
